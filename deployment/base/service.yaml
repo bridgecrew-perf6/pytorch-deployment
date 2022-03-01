@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: classifier
+spec:
+  selector:
+    deployment: classifier
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8666
+    targetPort: 8000

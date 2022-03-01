@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: classifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: classifier
+  template:
+    metadata:
+      labels:
+        deployment: classifier
+    spec:
+      containers:
+        - name: pytorch-model
+          image: gcr.io/hermes-freestyle/pytorch-deployment:latest
+          ports:
+            - containerPort: 8000
